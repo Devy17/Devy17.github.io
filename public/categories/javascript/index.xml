@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Javascript on Devy17</title>
-        <link>http://localhost:1313/categories/javascript/</link>
+        <link>https://devy17.github.io/categories/javascript/</link>
         <description>Recent content in Javascript on Devy17</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Devy17</copyright>
-        <lastBuildDate>Sun, 03 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/javascript/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 03 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://devy17.github.io/categories/javascript/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Node.js 설치</title>
-        <link>http://localhost:1313/p/node.js-%EC%84%A4%EC%B9%98/</link>
+        <link>https://devy17.github.io/p/node.js-%EC%84%A4%EC%B9%98/</link>
         <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/node.js-%EC%84%A4%EC%B9%98/</guid>
-        <description>&lt;img src="http://localhost:1313/p/node.js-%EC%84%A4%EC%B9%98/node-js.webp" alt="Featured image of post Node.js 설치" /&gt;&lt;p&gt;본문의 버전은 2025년 8월 3일 기준으로 작성되었으며,&lt;br&gt;
+        <guid>https://devy17.github.io/p/node.js-%EC%84%A4%EC%B9%98/</guid>
+        <description>&lt;img src="https://devy17.github.io/p/node.js-%EC%84%A4%EC%B9%98/node-js.webp" alt="Featured image of post Node.js 설치" /&gt;&lt;p&gt;본문의 버전은 2025년 8월 3일 기준으로 작성되었으며,&lt;br&gt;
 이후 버전 업데이트에 따라 설치 방법이 변경될 수 있습니다.&lt;/p&gt;
 &lt;h2 id=&#34;windows&#34;&gt;Windows
 &lt;/h2&gt;&lt;h3 id=&#34;npm-기준&#34;&gt;npm 기준

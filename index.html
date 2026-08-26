@@ -4,39 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Devy.hist</title>
-  <meta name="description" content="Devy의 AI와 소프트웨어 기록" />
+  <meta name="description" content="Devy.hist" />
   <style>
-    :root { --ink:#171717; --muted:#737373; --line:#e5e5e5; --paper:#fafaf9; --accent:#2563eb; }
+    :root { --ink:#171717; --muted:#737373; --paper:#fafaf9; }
     * { box-sizing:border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    main { max-width:720px; margin:0 auto; padding:28px 24px 72px; }
-    nav { display:flex; align-items:center; justify-content:space-between; font-size:14px; }
-    .brand { font-weight:700; letter-spacing:-.04em; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:720px; min-height:100vh; margin:0 auto; padding:28px 24px 48px; display:flex; flex-direction:column; }
+    nav { display:flex; justify-content:space-between; font-size:14px; }
     a { color:inherit; text-decoration:none; }
+    .brand { font-weight:700; letter-spacing:-.04em; }
     .github { color:var(--muted); }
-    header { padding:120px 0 88px; }
-    h1 { max-width:650px; margin:0; font-size:clamp(44px, 8vw, 72px); line-height:1.05; letter-spacing:-.075em; }
-    .intro { max-width:470px; margin:24px 0 0; color:var(--muted); font-size:18px; line-height:1.65; }
-    section { border-top:1px solid var(--line); padding-top:22px; }
-    .eyebrow { margin:0 0 16px; color:var(--muted); font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
-    .empty { display:block; border:1px solid var(--line); border-radius:12px; padding:24px; background:#fff; }
-    .empty strong { display:block; margin-bottom:8px; font-size:17px; letter-spacing:-.03em; }
-    .empty span { color:var(--muted); line-height:1.5; }
-    footer { margin-top:96px; color:var(--muted); font-size:13px; }
-    @media (max-width:560px) { header { padding:88px 0 64px; } }
+    header { margin:auto 0; }
+    h1 { margin:0; font-size:clamp(54px,10vw,88px); line-height:1; letter-spacing:-.08em; }
+    blockquote { margin:28px 0 0; color:var(--muted); font-size:12px; letter-spacing:.01em; }
+    footer { color:var(--muted); font-size:12px; }
   </style>
 </head>
 <body>
   <main>
     <nav><a class="brand" href="/">Devy.hist</a><a class="github" href="https://github.com/Devy17">GitHub</a></nav>
     <header>
-      <h1>AI와 소프트웨어에 대한 기록.</h1>
-      <p class="intro">매일 읽고, 필요한 것을 남깁니다.</p>
+      <h1>Still building.</h1>
+      <blockquote>“What does not kill me makes me stronger.” — Friedrich Nietzsche</blockquote>
     </header>
-    <section>
-      <p class="eyebrow">Latest notes</p>
-      <article class="empty"><strong>첫 기록을 준비 중입니다.</strong><span>매일의 AI 브리핑과 생각을 이곳에 차곡차곡 남길 예정입니다.</span></article>
-    </section>
     <footer>© 2026 Devy</footer>
   </main>
 </body>

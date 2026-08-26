@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+const all = (await getCollection('entries')).filter((entry) => !entry.data.draft);
+const date = (value: Date) => value.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'});
+const href = (entry: any) => entry.data.series ? `/series/${entry.data.series.slug}/${entry.id}/` : entry.data.kind === 'history' ? `/history/${entry.id}/` : `/${entry.data.kind}s/${entry.id}/`;
+const types:any = { briefings:{label:'Briefings',headline:'Daily signal.',intro:'AI news, papers, and links worth keeping.',kind:'briefing'}, articles:{label:'Articles',headline:'Long form.',intro:'Thoughts, technical notes, and things worth working through.',kind:'article'}, history:{label:'History',headline:'Selected work.',intro:'Open source, projects, experiments, and milestones.',kind:'history'} };
+export async function getStaticPaths() {
+  const paths:any[] = Object.keys(types).map((slug) => ({params:{slug},props:{mode:'listing',key:slug}}));
+  const groups = new Map<string,any>();
+  for (const entry of all) if (entry.data.series) { const series=entry.data.series; const group=groups.get(series.slug)||{...series,entries:[]}; group.entries.push(entry); groups.set(series.slug,group); }
+  paths.push({params:{slug:'series'},props:{mode:'series-index',groups:[...groups.values()]}});
+  for (const group of groups.values()) paths.push({params:{slug:`series/${group.slug}`},props:{mode:'series-list',group}});
+  for (const entry of all) paths.push({params:{slug:href(entry).replace(/^\//,'').replace(/\/$/,'')},props:{mode:'post',entry}});
+  return paths;
+}
+const props:any = Astro.props;
+let Content:any; if (props.mode === 'post') ({ Content } = await render(props.entry));
+---
+{props.mode === 'listing' && <Base title={`${types[props.key].label} · Devy.hist`} description={types[props.key].intro}><header class="page-head"><p class="eyebrow">{types[props.key].label}</p><h1>{types[props.key].headline}</h1><p class="intro">{types[props.key].intro}</p></header>{(() => { const entries=all.filter((entry)=>entry.data.kind===types[props.key].kind).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf()); return entries.length ? <div class="entry-list">{entries.map((entry)=><a class="list-item" href={href(entry)}><p class="list-meta">{date(entry.data.pubDate)} · {entry.data.kind}{entry.data.series ? ` · ${entry.data.series.title}`:''}</p><h2>{entry.data.title}</h2><p class="list-description">{entry.data.description}</p></a>)}</div> : <p class="empty">Nothing here yet.</p>; })()}</Base>}
+{props.mode === 'series-index' && <Base title="Series · Devy.hist" description="Ongoing collections of writing."><header class="page-head"><p class="eyebrow">Series</p><h1>In sequence.</h1><p class="intro">Longer threads that need more than one post.</p></header>{props.groups.length ? <div class="entry-list">{props.groups.map((group:any)=><a class="list-item" href={`/series/${group.slug}/`}><p class="list-meta">{group.entries.length} posts</p><h2>{group.title}</h2></a>)}</div> : <p class="empty">Series will appear here.</p>}</Base>}
+{props.mode === 'series-list' && <Base title={`${props.group.title} · Devy.hist`} description={props.group.title}><header class="page-head"><p class="eyebrow">Series</p><h1>{props.group.title}</h1><p class="intro">{props.group.entries.length} posts in sequence.</p></header><div class="entry-list">{props.group.entries.sort((a:any,b:any)=>a.data.series.order-b.data.series.order).map((entry:any)=><a class="list-item" href={href(entry)}><p class="list-meta">{date(entry.data.pubDate)}</p><h2>{entry.data.title}</h2><p class="list-description">{entry.data.description}</p></a>)}</div></Base>}
+{props.mode === 'post' && <Base title={`${props.entry.data.title} · Devy.hist`} description={props.entry.data.description}><article class="post"><p class="eyebrow">{props.entry.data.series?.title || props.entry.data.kind} · {date(props.entry.data.pubDate)}</p><h1>{props.entry.data.title}</h1><p class="post-meta">{props.entry.data.tags.join(' · ')}</p><div class="prose"><Content /></div></article></Base>}

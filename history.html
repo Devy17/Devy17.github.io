@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>History · Devy.hist</title>
+  <meta name="description" content="Open-source contributions by Devy" />
+  <style>
+    :root { --ink:#171717; --muted:#737373; --line:#e5e5e5; --paper:#fafaf9; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:720px; min-height:100vh; margin:0 auto; padding:28px 24px 48px; display:flex; flex-direction:column; }
+    nav { display:flex; justify-content:space-between; font-size:14px; }
+    a { color:inherit; text-decoration:none; }
+    .brand { font-weight:700; letter-spacing:-.04em; }
+    .links { display:flex; gap:16px; color:var(--muted); }
+    .active { color:var(--ink); }
+    header { padding:112px 0 72px; }
+    .eyebrow { margin:0 0 16px; color:var(--muted); font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(52px,9vw,80px); line-height:1; letter-spacing:-.08em; }
+    .intro { margin:20px 0 0; color:var(--muted); font-size:16px; }
+    section { border-top:1px solid var(--line); padding-top:20px; }
+    .year { margin:0 0 36px; color:var(--muted); font-size:13px; }
+    article { padding:0 0 32px; }
+    h2 { margin:0; font-size:24px; letter-spacing:-.045em; }
+    .scope { margin:7px 0 18px; color:var(--muted); font-size:14px; }
+    .detail { max-width:540px; margin:0; font-size:16px; line-height:1.6; }
+    .meta { margin:16px 0 0; color:var(--muted); font-size:13px; }
+    .actions { display:flex; gap:16px; margin-top:18px; font-size:14px; text-decoration:underline; text-underline-offset:3px; }
+    footer { margin-top:auto; padding-top:56px; color:var(--muted); font-size:12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <nav><a class="brand" href="/">Devy.hist</a><span class="links"><a class="active" href="/history.html">History</a><a href="https://github.com/Devy17">GitHub</a></span></nav>
+    <header>
+      <p class="eyebrow">History</p>
+      <h1>Open source.</h1>
+      <p class="intro">Public contributions and the work behind them.</p>
+    </header>
+    <section>
+      <p class="year">2026</p>
+      <article>
+        <h2>Dart SDK</h2>
+        <p class="scope">dart:ffi · NativeFinalizer.callback</p>
+        <p class="detail">Added an API that returns the finalization callback a <code>NativeFinalizer</code> was created with.</p>
+        <p class="meta">43 additions · 4 files · landed August 13, 2026</p>
+        <div class="actions"><a href="https://github.com/dart-lang/sdk/commit/b4778eac604d8ab3c9835ffa40556c770deceb6d">Commit</a><a href="https://github.com/dart-lang/sdk/pull/64011">Pull request</a></div>
+      </article>
+    </section>
+    <footer>© 2026 Devy</footer>
+  </main>
+</body>
+</html>

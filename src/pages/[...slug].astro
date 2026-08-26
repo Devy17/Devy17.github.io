@@ -6,12 +6,13 @@ const date = (value: Date) => value.toLocaleDateString('en',{year:'numeric',mont
 const href = (entry: any) => entry.data.series ? `/series/${entry.data.series.slug}/${entry.id}/` : entry.data.kind === 'history' ? `/history/${entry.id}/` : `/${entry.data.kind}s/${entry.id}/`;
 const types:any = { briefings:{label:'Briefings',headline:'Daily signal.',intro:'AI news, papers, and links worth keeping.',kind:'briefing'}, articles:{label:'Articles',headline:'Long form.',intro:'Thoughts, technical notes, and things worth working through.',kind:'article'}, history:{label:'History',headline:'Selected work.',intro:'Open source, projects, experiments, and milestones.',kind:'history'} };
 export async function getStaticPaths() {
-  const paths:any[] = Object.keys(types).map((slug) => ({params:{slug},props:{mode:'listing',key:slug}}));
+  const entries = (await getCollection('entries')).filter((entry) => !entry.data.draft);
+  const paths:any[] = ['briefings','articles','history'].map((slug) => ({params:{slug},props:{mode:'listing',key:slug}}));
   const groups = new Map<string,any>();
-  for (const entry of all) if (entry.data.series) { const series=entry.data.series; const group=groups.get(series.slug)||{...series,entries:[]}; group.entries.push(entry); groups.set(series.slug,group); }
+  for (const entry of entries) if (entry.data.series) { const series=entry.data.series; const group=groups.get(series.slug)||{...series,entries:[]}; group.entries.push(entry); groups.set(series.slug,group); }
   paths.push({params:{slug:'series'},props:{mode:'series-index',groups:[...groups.values()]}});
   for (const group of groups.values()) paths.push({params:{slug:`series/${group.slug}`},props:{mode:'series-list',group}});
-  for (const entry of all) paths.push({params:{slug:href(entry).replace(/^\//,'').replace(/\/$/,'')},props:{mode:'post',entry}});
+  for (const entry of entries) { const slug = entry.data.series ? `series/${entry.data.series.slug}/${entry.id}` : entry.data.kind === 'history' ? `history/${entry.id}` : `${entry.data.kind}s/${entry.id}`; paths.push({params:{slug},props:{mode:'post',entry}}); }
   return paths;
 }
 const props:any = Astro.props;

@@ -4,7 +4,7 @@ const entries = defineCollection({
   loader: glob({ base: './src/content/entries', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(), description: z.string(), pubDate: z.coerce.date(),
-    kind: z.literal('article'),
+    kind: z.enum(['article', 'history']),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false)
   })

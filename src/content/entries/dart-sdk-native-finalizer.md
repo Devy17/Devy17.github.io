@@ -2,7 +2,7 @@
 title: NativeFinalizer.callback
 description: A landed dart:ffi contribution to the Dart SDK.
 pubDate: 2026-08-13
-kind: article
+kind: history
 tags: [Dart, FFI, Open Source]
 ---
 
